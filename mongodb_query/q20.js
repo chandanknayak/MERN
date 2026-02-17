@@ -1,0 +1,46 @@
+db.employees.aggregate([
+    {
+        $project:{
+            _id:0,
+            name:1,
+            dept:"$department"
+        }
+    },
+    {
+        $sort:{name:1}
+    }
+]);
+db.employees.aggregate([
+    {
+        $project:{
+            _id:0,
+            name:1,
+            dept:"$department"
+        }
+    },
+        {
+            $sort:{name:1}
+        }
+    ]);
+
+db.createCollection("vendors",{
+        validator:{
+            $jsonSchema:{
+                bsonType:"object",
+                required:["name","age"],
+                properties:{
+                    name:{
+                        bsonType:"string",
+                        description:"must be a string and is required"
+                    },
+            age:{
+                bsonType:"int",
+                minimum:18
+            }
+        }
+    }}});
+    db.vendors.insertOne(
+        {name:"priyanshu1",
+        age:10, 
+        }
+    );

@@ -1,0 +1,8 @@
+db.employees.find({department:"IT"})
+db.employees.find({department:{$eq:"IT"}})
+db.employees.find({salary:{$eq:1500}})
+db.employees.find({salary:{$gt:1500}})
+db.employees.find({salary:{$gte:1500}})
+db.employees.find({salary:{$ne:1500}})
+db.employees.find({salary:{$lt:1500}})
+db.employees.find({salary:{$lte:1500}})

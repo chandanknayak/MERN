@@ -1,0 +1,33 @@
+db.employees.aggregate(
+    [
+        {$match:{department:"IT"}},
+        {$sort:{name:1}},
+        {$project:{_id:0,name:1}},
+        {$skip:1},
+        {$limit:2},
+    ]
+)
+db.employees.aggregate(
+    [
+        {$group:{_id:"$department",totalSalary:{$sum:"$salary"}}}, 
+        {$sort:{totalSalary:-1}},
+    ]
+)
+db.employees.aggregate(
+    [
+        {$group:{_id:"$department",
+        totalSalary:{$sum:"$salary"},
+        Highest:{$max:"$salary" },
+        lowest:{$min:"$salary"},
+        Average:{$avg:"$salary"},
+    }}, 
+        {$sort:{totalSalary:-1}},
+    ]
+)
+db.employees.aggregate(
+    [
+        {$project:{_id:0,name:1,salary:1,
+            annualsalary:{$multiply:["$salary",12] }
+}}
+    ]
+)

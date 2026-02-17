@@ -1,0 +1,39 @@
+db.employees.find(
+    {location:"FL"}
+)
+db.employees.updateOne(
+    {email:"john@gmail.com"},
+    {$push:{location:"AZ"}}
+)
+db.employees.updateOne(
+    {email:"john@gmail.com"},
+    {$pop:{location:1}}
+)
+db.employees.updateMany(
+    {},
+    {$push:{skills:"python"}}
+)
+db.employees.updateOne(
+    {email:"john@gmail.com"},
+    {$push:{skills:".NET"}}
+)
+db.employees.updateMany(
+    {},
+    {$push:{skills:"java"}}
+)
+db.employees.updateOne(
+    {email:"john@gmail.com"},
+    {$pop:{skills:-1}}
+)
+db.employees.updateOne(
+    {email:"eva@gmail.com"},
+    {$addToSet:{skills:".NET"}}
+)
+db.employees.updateOne(
+    {email:"eva@gmail.com"},
+    {$pull:{skills:"java"}}
+)
+db.users.updateMany(
+    {},
+    {$pop:{skills:1}}
+)

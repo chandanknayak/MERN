@@ -1,0 +1,25 @@
+
+db.employees.aggregate([
+    {
+        $lookup:{  
+            from:"orders",
+            localField:"_id",
+            foreignField:"empid",
+            as:"orderDetails"
+        }
+    },
+    {
+        $unwind:"$orderDetails"
+    },
+{
+    $project:{
+        _id:0,
+        name:1,
+        product:"$orderDetails.product",
+        orderValue:"$orderDetails.orderValue"
+    }
+},
+{
+    $out:"order_report"
+}
+])

@@ -1,0 +1,39 @@
+db.employees.updateOne(
+    {email:"alice@gmail.com"},
+    {$set:{salary:1600}}
+)
+db.employees.updateOne(
+    {email:"alice@gmail.com"},
+    {$inc:{salary:1600}}
+)
+db.employees.updateOne(
+    {},
+    {$inc:{salary:1600}}
+)
+db.employees.updateMany(
+    {},
+    {$set:{points:1}}
+)
+db.employees.updateMany(
+    {},
+    {$set:{points:1}},{$inc:{salary:1600}}
+)
+db.employees.updateOne(
+    {email:"alice@gmail.com"},
+    {$inc:{salary:1600}},
+    {
+      upsert:true 
+    }
+)
+db.employees.updateOne(
+    {email:"abc@gmail.com"},
+    {$inc:{salary:1600}},
+    {
+      upsert:true 
+    }
+)
+db.employees.deleteOne(
+    {email:"abc@gmail.com"}
+)
+db.employees.updateMany({email:{$in:["alice@gmail.com","bob@gmail.com"]}},{$inc:{salary:100}})
+db.employees.find({ name:{$exists:false} })

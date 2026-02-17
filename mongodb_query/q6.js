@@ -1,0 +1,12 @@
+db.employees.find(
+    {department:"IT",salary:{$gte:1450}}
+)
+db.employees.find(
+    {$and:[{department:"IT"},{salary:{$gte:1450}}]}
+)
+db.employees.find(
+    {$or:[{department:"IT"},{salary:{$gte:1450}}]}
+)
+db.employees.find(
+    {$or:[{department:"IT"},{salary:{$gte:1450}}]},{name:1,email:1,department:1}
+)
