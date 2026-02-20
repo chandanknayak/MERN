@@ -54,6 +54,9 @@ let users =[
         role:"admin"
     }
 ]
+app.get("/", (req, res) => {
+    res.json(users)
+})
 
 app.get("/:id", (req, res) => {
 

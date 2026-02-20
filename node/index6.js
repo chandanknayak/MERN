@@ -24,8 +24,8 @@ import express from 'express'
 
 const app = express()
 
-app.get("/", (req, res) => {
-res.send("Hello "+req.query.name+req.query.age)
+app.get("/", (req, res) => {                                           //query string :- ?name=john&age=21
+res.send("Hello "+req.query.name+req.query.age)                       //localhost:8080/?name=john&age=21
 })
 
 app.listen(8080, () => console.log("Server Running"))
