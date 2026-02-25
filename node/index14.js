@@ -1,0 +1,13 @@
+import express from 'express'
+import jwt from 'jsonwebtoken'
+const SECRET="lpu"
+const app= express()
+app.listen(8080, () => console.log("server started"));
+const user = {
+    name: "John",
+    email : "john@gmail.com",
+    role : "Student"
+
+}
+const token = jwt.sign(user,SECRET,{expiresIn:"1h"})
+console.log(token)

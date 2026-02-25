@@ -8,7 +8,7 @@ const logger = (req, res, next) => {
   next();
 };
 // app.use(logger);
-app.get("/", logger, (req, res) => {
+app.get("/",  (req,logger, res) => {
   //   app.use(logger);
   console.log(req.message);
   res.json(req.url);
