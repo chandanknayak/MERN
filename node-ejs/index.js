@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 import expressLayouts from "express-ejs-layouts";
 const app = express();
 app.use(expressLayouts)
@@ -9,7 +10,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const dbConnect = async () => {
-  await mongoose.connect("mongodb://localhost:27017/merndatabase");
+  await mongoose.connect("process.env.MONGO_URI");
 };
 const startServer = async () => {
   await dbConnect();
